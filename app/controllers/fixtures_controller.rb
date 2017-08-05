@@ -1,5 +1,6 @@
 class FixturesController < ApplicationController
   before_action :set_fixture, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /fixtures
   # GET /fixtures.json
