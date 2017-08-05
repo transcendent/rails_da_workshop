@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @room.floor %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @room.format %>
+</p>
+
+<table border>
+  <thead>
+    <tr>
+      <th>Asset</th>
+      <th>Classification</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @room.fixtures.each do |fixture| %>
+      <tr>
+        <td><%= fixture.asset %></td>
+        <td><%= fixture.classification %></td>
+        <td><%= fixture.notes %></td>
+        <td><%= link_to 'Show', fixture %></td>
+        <td><%= link_to 'Edit', edit_fixture_path(fixture) %></td>
+        <td><%= link_to 'Destroy', fixture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Add a Fixture', new_fixture_path(:room_id => @room.id) %>
+<%= link_to 'Back', rooms_path %>

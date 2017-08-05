@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @fixture.room.name %>
+</p>
+
+
+<p>
+  <strong>Asset:</strong>
+  <%= @fixture.asset %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @fixture.classification %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @fixture.notes %>
+</p>
+
+
+
+
+
+<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
+<%= link_to 'Back', fixtures_path %>
