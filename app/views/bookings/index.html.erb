@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bookings</h1>
+
+
+
+<%= form_tag( url_for(:controller => 'bookings', :action => 'index') , method: "get") do %>
+  
+  <div class="field">
+    <%= label_tag(:start_date, "Booking From:") %>
+    <%= select_date Date.today, prefix: :start_date %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:end_date, "Booking To:") %>
+    <%= select_date Date.today + 7, prefix: :end_date %>
+  </div>
+
+  <%= submit_tag("Show Bookings") %>
+
+<% end %>
+
+<br/><br/>
+
+<table border>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Room</th>
+      <th>Booking date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.user.email %></td>
+        <td><%= booking.room.name %></td>
+        <td><%= booking.booking_date %></td>
+        <td><%= link_to 'Show', booking %></td>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Booking', new_booking_path %>
